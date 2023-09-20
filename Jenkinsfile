@@ -10,7 +10,8 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                sh 'docker login -u sanwukong -p Tryme@2000#'
+                sh 'Password=Tryme@2000# && Username=sanwukong'
+                sh 'docker login -u $Username -p $Password'
               }
         }
         
