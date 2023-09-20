@@ -1,28 +1,28 @@
 pipeline {
-  agent any
-    
-  tools {nodejs "nodejs"}
-    
-  stages {
-        
-    stage('Git') {
-      steps {
-        git 'https://github.com/SanWukong/CICD.git'
-      }
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/SanWukong/CICD.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                docker build -t sanwukong/jenkins:1.0 .
+            }
+        }
+
+        stage('Push') {
+            steps {
+                docker push sanwukong/jenkins:1.0
+            }
+        }
+        stage('Deploy') {
+            steps {
+                kubernetesDeploy config: 'kubernetes-config.yml'
+            }
+        }
     }
-     
-    stage('Build') {
-      steps {
-        sh 'npm install'
-         sh '<<Build Command>>'
-      }
-    }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
-      }
-    }
-  }
 }
