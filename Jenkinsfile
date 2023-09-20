@@ -16,13 +16,13 @@ pipeline {
         
         stage('Build') {
             steps {
-                docker build -t sanwukong/jenkins:1.0 .
+                sh 'docker build -t sanwukong/jenkins:1.0 .'
              }
         }
         
         stage('Push') {
             steps {
-                docker push sanwukong/jenkins:1.0
+                sh 'docker push sanwukong/jenkins:1.0'
             }
         }
         stage('Deploy') {
