@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+        docker { image 'node'}
     stages {
         stage('Checkout') {
             steps {
@@ -10,7 +10,7 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                docker login -u sanwukong -p Tryme@2000#
+                docker { login -u sanwukong -p Tryme@2000# }
               }
         }
         
