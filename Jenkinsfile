@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        docker 'Docker'
+        nodejs 'Nodejs'
+    }
         
     stages {
         stage('Checkout') {
@@ -10,7 +14,7 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                sh 'docker login'
+                sh 'docker login -u Sanwukong -p Tryme@2000#'
               }
         }
         
