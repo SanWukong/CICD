@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        Docker 'Docker24.0.6'
+        Docker 'Docker17.09.1-ce'
         nodejs 'node18.18.0'
     }
         
@@ -12,6 +12,12 @@ pipeline {
             }
         }
 
+    stages {
+        stage('Test Dokcer') {
+            steps {
+                sh 'docker version'
+            }
+        }
         stage('Login to Docker Hub') {
             steps {
                 sh 'docker login -u Sanwukong -p Tryme@2000#'
