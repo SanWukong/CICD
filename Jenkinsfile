@@ -8,30 +8,29 @@ pipeline {
             }
         }
 
-    stages {
         stage('Test Dokcer') {
             steps {
                 sh 'docker version'
             }
         }
-    stage('Login to Docker Hub') {
+        stage('Login to Docker Hub') {
             steps {
                 sh 'docker login -u Sanwukong -p Tryme@2000#'
               }
         }
         
-    stage('Build') {
+        stage('Build') {
             steps {
                 sh 'docker build -t sanwukong/jenkins:1.0 .'
              }
         }
         
-    stage('Push') {
+        stage('Push') {
             steps {
                 sh 'docker push sanwukong/jenkins:1.0'
             }
         }
-    stage('Deploy') {
+        stage('Deploy') {
             steps {
                 kubernetesDeploy config: 'kubernetes-config.yml'
             }
