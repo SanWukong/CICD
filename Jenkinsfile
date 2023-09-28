@@ -32,6 +32,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'kubectl get pods'
+                sh 'Awards="Congratulations it's working" && echo $Awards'
                 kubernetesDeploy config: 'kubernetes-config.yml'
             }
         }
