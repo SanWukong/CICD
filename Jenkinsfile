@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                 sh 'ssh root206.189.181.38 -p 81zW&|d9f<A'
+                sh 'ssh root206.189.181.38 -p 81zW&|d9f<A'
                 sh 'kubectl get pods'
                 
             }
