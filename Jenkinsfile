@@ -30,11 +30,15 @@ pipeline {
                 sh 'docker push sanwukong/jenkins:1.0'
             }
         }
+        stage('Kubernetes') {
+              steps {
+                  kubeconfig(credentialsId: 'test1', serverUrl: '172.18.0.2:6443') {
+    // some block
+}  
+        }
+    }
         stage('Deploy') {
             steps {
-                kubernetesDeploy(
-          config: 'my-kubernetes-cluster',
-          script: 'deployment.yaml)
                 sh 'kubectl'
                 
             }
