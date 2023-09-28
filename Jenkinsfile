@@ -32,6 +32,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                kubernetesDeploy(
+          config: 'my-kubernetes-cluster',
+          script: 'deployment.yaml)
                 sh 'kubectl'
                 
             }
