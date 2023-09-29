@@ -14,7 +14,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 30
       containers:
-      - name: nodejs
+      - name: nginx
         image: docker.io/sanwukong/nginx
         imagePullPolicy: "Always"
         ports:
@@ -28,7 +28,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8082
+  - port: 80
     targetPort: 80
   selector:
     app: nginx
