@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'kubectl get pods'
                 sh 'ls -l'
-                sh 'kubectl apply deployement.yaml'
+                sh 'kubectl --file apply deployement.yaml'
             }
         }
     }
