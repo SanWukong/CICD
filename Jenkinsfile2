@@ -12,6 +12,7 @@ pipeline {
                 sh 'kubectl get pods'
                 sh 'ls -l'
                 sh 'kubectl apply -f nginx.yaml'
+                sh 'kubectl patch pod my-nginx-646554d7fd-jb4k5 -p '{"spec":{"containers":[{"name": "nginx","image": "nginx:1.9.6"}]}}''
             }
         }
     }
