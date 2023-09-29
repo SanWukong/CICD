@@ -1,12 +1,7 @@
-FROM node:18
+FROM nginx:latest
 
-WORKDIR /usr/src/app
+RUN echo "hello friend" > /usr/share/nginx/html/index.html
 
-COPY package*.json ./
+EXPOSE 80
 
-RUN npm install
-
-COPY . .
-
-EXPOSE 5000
-CMD [ "npm", "start" ]
+CMD ["nginx", "-g", "daemon off;"]
