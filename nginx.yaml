@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: ndoejs
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: nodejs
   replicas: 1
   template:
     metadata:
       labels:
-        run: my-nginx
+        run: nodejs
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
-      - name: my-nginx
-        image: nginx
+      - name: nodejs
+        image: docker.io/sanwukong/nodejs
+        imagePullPolicy: "Always"
         ports:
-        - containerPort: 80
+        - containerPort: 8080
