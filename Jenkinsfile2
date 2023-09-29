@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+        
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/SanWukong/CICD.git'
+            }
+        }
+      stage('Deploy') {
+            steps {
+                sh 'kubectl get pods'
+            }
+        }
+    }
+}
