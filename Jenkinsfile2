@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'kubectl get pods'
                 sh 'ls -l'
-                sh 'kubectl apply -f '
+                sh 'kubectl apply -f nginx.yaml'
             }
         }
     }
