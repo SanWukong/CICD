@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'alias k="kubectl"'
                 sh 'ls -l'
-                sh 'k apply deployement.yaml'
+                sh 'k get pods'
             }
         }
     }
