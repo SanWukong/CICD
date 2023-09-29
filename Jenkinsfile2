@@ -7,11 +7,43 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/SanWukong/CICD.git'
             }
         }
-      stage('Deploy') {
+
+        stage('Test Docker') {
+            steps {
+                sh 'docker version'
+            }
+        }
+
+        stage('Checkout Docker Hub') {
+              steps {
+                dockerHub(username: 'sanwukong', password: 'Tryme@2000#')
+             }
+        }
+
+         stage('Login to Docker Hub') {
+            steps {
+                sh 'docker login -u sanwukong -p Tryme@2000#'
+              }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'docker build -t sanwukong/nginx .'
+             }
+        }
+        
+        stage('Push') {
+            steps {
+                sh 'docker push sanwukong/nginx'
+            }
+        }
+
+        stage('Deploy') {
             steps {
                 sh 'kubectl get pods'
                 sh 'ls -l'
                 sh 'kubectl apply -f nginx.yaml'
+                sh 'kubectl delete pods nginx-0'
             }
         }
     }
