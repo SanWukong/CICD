@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'alias k="kubectl -f"'
                 sh 'ls -l'
-                sh 'kubectl --file apply deployement.yaml'
+                sh 'k apply deployement.yaml'
             }
         }
     }
