@@ -14,10 +14,10 @@ pipeline {
             }
         }
 
-        stage('Checkout Docker Hub') {
-              steps {
-                dockerHub(username: 'sanwukong', password: 'Tryme@2000#')
-             }
+        stage('Login to Docker Hub') {
+            steps {
+                sh 'docker login -u sanwukong -p Tryme@2000#'
+              }
         }
 
         stage('Build') {
