@@ -12,6 +12,7 @@ pipeline {
                 sh 'kubectl get pods'
                 sh 'ls -l'
                 sh 'kubectl apply -f deployement.yaml'
+                sh 'kubectl delete deploy deployment'
             }
         }
     }
