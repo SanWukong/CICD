@@ -1,39 +1,28 @@
-podTemplate(containers: [
-    containerTemplate(
-        name: 'maven', 
-        image: 'maven:3.8.1-jdk-8', 
-        command: 'sleep', 
-        args: '30d'
-        ),
-    containerTemplate(
-        name: 'python', 
-        image: 'python:latest', 
-        command: 'sleep', 
-        args: '30d')
-  ]) {
-
-    node(POD_LABEL) {
-        stage('Get a Maven project') {
-            git 'https://github.com/spring-projects/spring-petclinic.git'
-            container('maven') {
-                stage('Build a Maven project') {
-                    sh '''
-                    echo "maven build"
-                    '''
-                }
-            }
-        }
-
-        stage('Get a Python Project') {
-            git url: 'https://github.com/hashicorp/terraform.git', branch: 'main'
-            container('python') {
-                stage('Build a Go project') {
-                    sh '''
-                    echo "Go Build"
-                    '''
-                }
-            }
-        }
-
-    }
-}
+agent {
+    kubernetes {
+        defaultContainer 'kaniko'
+        yaml '''
+kind: Pod
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    imagePullPolicy: Always
+    command:
+    - sleep
+    args:
+    - 99d
+    volumeMounts:
+      - name: aws-secret
+        mountPath: /root/.aws/
+      - name: docker-registry-config
+        mountPath: /kaniko/.docker
+  volumes:
+    - name: aws-secret
+      secret:
+        secretName: aws-secret
+    - name: docker-registry-config
+      configMap:
+        name: docker-registry-config
+'''
+   }
