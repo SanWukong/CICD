@@ -9,7 +9,7 @@ pipeline {
         }
       stage('Deploy') {
             steps {
-                sh 'alias k="kubectl -f"'
+                sh 'alias k="kubectl"'
                 sh 'ls -l'
                 sh 'k apply deployement.yaml'
             }
