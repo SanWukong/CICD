@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: nodejs
-        image: docker.io/sanwukong/nodejs
+        image: docker.io/sanwukong/nodejs:lts
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
