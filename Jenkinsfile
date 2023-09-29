@@ -30,18 +30,13 @@ pipeline {
                 sh 'docker push sanwukong/jenkins:1.0'
             }
         }
-        stage('Kubernetes') {
+      
+        stage('Deploying React.js container to Kubernetes') {
               steps {
-                  kubeconfig(credentialsId: 'test1', serverUrl: '172.18.0.2:6443') {
-    // some block
-}  
-        }
+                    script {
+                          kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
     }
-        stage('Deploy') {
-            steps {
-                sh 'kubectl'
-                
-            }
+}
         }
     }
 }
