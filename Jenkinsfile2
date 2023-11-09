@@ -16,19 +16,19 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                sh 'docker login -u sanwukong -p Tryme@2000#'
+                sh 'docker login -u ralantoherilala -p Tryme@2000#'
               }
         }
 
         stage('Build') {
             steps {
-                sh 'docker build -t sanwukong/nginx .'
+                sh 'docker build -t ralantoherilala/nginx .'
              }
         }
         
         stage('Push') {
             steps {
-                sh 'docker push sanwukong/nginx'
+                sh 'docker push ralantoherilala/nginx'
             }
         }
 
