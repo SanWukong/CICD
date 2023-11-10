@@ -37,6 +37,7 @@ pipeline {
                 sh 'ls'
                 sh 'kubectl version --help'
                 sh 'kubectl config get-users'
+                sh 'kubectl get pods'
             }
         }
     }
