@@ -36,6 +36,7 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'kubectl config set-credentials jenkins-admin --token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjZzNXJaaFJsSVptN20zMUhmcGktRlU1Z1Y0RGhZMHZDNS0wUTNxQ3lmUTgifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjk5NTg2MzU3LCJpYXQiOjE2OTk1ODI3NTcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJqZW5raW5zIiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImplbmtpbnMtYWRtaW4iLCJ1aWQiOiJmY2UyNmQ2NC00M2UzLTQwZDEtYTFiNy0xMjU3NmMyM2JhYzkifX0sIm5iZiI6MTY5OTU4Mjc1Nywic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OmplbmtpbnM6amVua2lucy1hZG1pbiJ9.NNCZFN93egjtA7bjpoE3LLfDuE2FTrWoUDC2dtCAEzruaTN7cWgG8Z-BQXT8F5lhyD4W7kXrX-ZcCSTpNEt6LJ3alzoHNHAItgg3DF1X8tfGn-BmnbBLArbbvPXiALOfk74AL-6GNaSTOkG7bsQAR-8_K62pZRZ_pm9jG2DwZb7rj4KucbSjYy9AeD9gu5fB2wFdMbYWkfr5N74uU9SBp5xr6DisHfUYrboOa3Imfc4-xUaRDdbdIYYmnIXt7Ja2Fcw1f3s11D9mIFR1Kf3VFO6gaEbcYxsSGL3M6yp27x3VKELV8mDNu_0AbS-UhSSLN2K7q2PtCbiWUrlfnOLi3w'
+                sh 'kubectl get pods'
             }
         }
     }
