@@ -36,6 +36,7 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'kubectl version --help'
+                sh 'kubectl get nodes -v=10'
                 sh 'kubectl config get-users'
                 sh 'kubectl get pods'
             }
