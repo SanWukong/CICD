@@ -34,7 +34,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'kubectl version'
+                sh 'kubectl version --token $kubernetes --server https://127.0.0.1:36917'
             }
         }
     }
