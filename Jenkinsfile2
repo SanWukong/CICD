@@ -35,6 +35,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'ls'
+                sh 'kubectl apply -f nginx.yaml -n jenkins'
             }
         }
     }
