@@ -34,7 +34,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'kubectl version --help'
+                sh 'kubectl version'
             }
         }
     }
